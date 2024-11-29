@@ -9,7 +9,7 @@ else
   if [[ ! $1 =~ ^[0-9]+$ ]]
   then 
     
-    #ATOMIC_NUMBER=$($PSQL "SELECT atomic_number FROM elements WHERE symbol = '$1' OR name = '$1'")
+    ATOMIC_NUMBER=$($PSQL "SELECT atomic_number FROM elements WHERE symbol = '$1' OR name = '$1'")
     ELEMENT_NAME=$($PSQL "SELECT name FROM elements WHERE symbol = '$1' OR name = '$1'")
     ELEMENT_SYMBOL=$($PSQL "SELECT symbol FROM elements WHERE symbol = '$1' OR name = '$1'")
   else
