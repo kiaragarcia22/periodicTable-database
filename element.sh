@@ -21,14 +21,14 @@ else
 
   if [[ -z $ATOMIC_NUMBER ]]
   then
-    #echo "I could not find that element in the database."
+    echo "I could not find that element in the database."
   else
     
     ATOMIC_MASS=$($PSQL "SELECT atomic_mass FROM properties WHERE atomic_number = $ATOMIC_NUMBER")
     MELTING_POINT=$($PSQL "SELECT melting_point_celsius FROM properties WHERE atomic_number = $ATOMIC_NUMBER")
     BOILING_POINT=$($PSQL "SELECT boiling_point_celsius FROM properties WHERE atomic_number = $ATOMIC_NUMBER")
     TYPE_ID=$($PSQL "SELECT type_id FROM properties WHERE atomic_number = $ATOMIC_NUMBER")
-    #TYPE=$($PSQL "SELECT type FROM types WHERE type_id = $TYPE_ID")
+    TYPE=$($PSQL "SELECT type FROM types WHERE type_id = $TYPE_ID")
 
     echo "The element with atomic number $(echo "$ATOMIC_NUMBER" | sed -r 's/^ *| *$//g') is $(echo "$ELEMENT_NAME" | sed -r 's/^ *| *$//g') ($(echo "$ELEMENT_SYMBOL" | sed -r 's/^ *| *$//g')). It's a $(echo "$TYPE" | sed -r 's/^ *| *$//g'), with a mass of $(echo "$ATOMIC_MASS" | sed -r 's/^ *| *$//g') amu. $(echo "$ELEMENT_NAME" | sed -r 's/^ *| *$//g') has a melting point of $(echo "$MELTING_POINT" | sed -r 's/^ *| *$//g') celsius and a boiling point of $(echo "$BOILING_POINT" | sed -r 's/^ *| *$//g') celsius."
   fi
