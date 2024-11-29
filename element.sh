@@ -15,7 +15,7 @@ else
   else
     
     ATOMIC_NUMBER=$($PSQL "SELECT atomic_number FROM elements WHERE atomic_number = $1")
-    #ELEMENT_NAME=$($PSQL "SELECT name FROM elements WHERE atomic_number = $1")
+    ELEMENT_NAME=$($PSQL "SELECT name FROM elements WHERE atomic_number = $1")
     ELEMENT_SYMBOL=$($PSQL "SELECT symbol FROM elements WHERE atomic_number = $1")
   fi
 
